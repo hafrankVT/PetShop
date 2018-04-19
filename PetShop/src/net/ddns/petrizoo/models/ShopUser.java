@@ -14,12 +14,12 @@ import javax.persistence.Transient;
  */
 @Entity
 
-public class User implements Serializable {
+public class ShopUser implements Serializable {
 
 	@Transient
 	private static final long serialVersionUID = 1L;
 
-	public User() {
+	public ShopUser() {
 		super();
 	}
 	

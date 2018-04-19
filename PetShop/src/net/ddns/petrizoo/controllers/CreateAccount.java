@@ -2,12 +2,15 @@ package net.ddns.petrizoo.controllers;
 
 import java.io.IOException;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import net.ddns.petrizoo.services.LoginManager;
 
 /**
  * Servlet implementation class CreateAccount
@@ -23,6 +26,9 @@ public class CreateAccount extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    
+    @EJB
+    LoginManager lm;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -39,6 +45,11 @@ public class CreateAccount extends HttpServlet {
 		//AhA! Now, let's create this user's account!
 		
 		///ALL MANNER OF VALIDATION WILL NEED TO GO HERE
+		//Get username/password
+		String userName = request.getParameter("username");
+		String password = request.getParameter("password");
+		
+		lm.addUser(userName, password);
 		
 	}
 

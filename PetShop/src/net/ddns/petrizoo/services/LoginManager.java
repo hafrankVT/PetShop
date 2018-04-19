@@ -5,7 +5,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import net.ddns.petrizoo.models.User;
+import net.ddns.petrizoo.models.ShopUser;
 
 /**
  * Session Bean implementation class LoginManager
@@ -23,11 +23,11 @@ public class LoginManager {
     }
     
     //Declaration of EntityManager
-    @PersistenceContext(unitName="pet-shop")
+    @PersistenceContext(unitName="petshop")
 	EntityManager em;
     
     public void addUser(String userName, String password) {
-    	User user = new User();
+    	ShopUser user = new ShopUser();
     	
     	user.setPassword(password);
     	user.setUserName(userName);
