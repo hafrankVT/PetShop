@@ -1,0 +1,44 @@
+@charset "ISO-8859-1";
+
+.nav-top {
+	position: fixed;
+	width: 100%;
+
+	top: 0;
+}
+
+.nav-bar {
+	width: 100%;
+	overflow: hidden;
+	display: block;
+	background-color: #ff0000;
+	position: fixed;
+}
+
+.nav-bar-item {
+	padding: 8px 16px;
+	float: left;
+	width: auto;
+	border: none;
+	display: block;
+	outline: 0;
+}
+
+.nav-bar-item-right {
+	padding: 8px 16px;
+	float: left;
+	width: auto;
+	border: none;
+	display: block;
+	outline: 0;
+	color: #FFFFFF;
+	background-color: #FF0000;
+	float: right!important;
+}
+
+.main-content {
+	display: block;
+	position: relative;
+	padding: 10px;
+	clear: both;
+}
