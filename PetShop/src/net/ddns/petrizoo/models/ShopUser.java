@@ -6,12 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Transient;
 
 /**
  * Entity implementation class for Entity: User
  *
  */
+@NamedQuery(name="User.findUserByName", query="SELECT u FROM ShopUser u WHERE u.userName = :userName")
 @Entity
 
 public class ShopUser implements Serializable {
@@ -23,21 +25,21 @@ public class ShopUser implements Serializable {
 		super();
 	}
 	
+
+//	@GeneratedValue(strategy = GenerationType.AUTO)
+//	private Integer id;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
-	
 	private String userName;
 	
 	private String password;
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
+//	public Integer getId() {
+//		return id;
+//	}
+//
+//	public void setId(Integer id) {
+//		this.id = id;
+//	}
 
 	public String getUserName() {
 		return userName;

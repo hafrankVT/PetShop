@@ -2,12 +2,15 @@ package net.ddns.petrizoo.controllers;
 
 import java.io.IOException;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import net.ddns.petrizoo.services.LoginManager;
 
 /**
  * Servlet implementation class Login
@@ -23,6 +26,9 @@ public class Login extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    
+    @EJB
+    LoginManager lm;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,7 +42,7 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Thank you for that information. You may now go");
+		lm.logOnUser(request.getParameter("username"), request.getParameter("password"));
 	}
 
 }
