@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Transient;
 
 /**
@@ -36,6 +37,9 @@ public class Pet implements Serializable {
 	private Gender gender;
 	
 	private boolean fixed;
+	
+	@Lob
+	private byte[] picture;
 
 	public Integer getId() {
 		return id;
@@ -89,6 +93,14 @@ public class Pet implements Serializable {
 	public String toString() {
 		return "Pet [id=" + id + ", name=" + name + ", petType=" + petType + ", cost=" + cost + ", gender=" + gender
 				+ ", fixed=" + fixed + "]";
+	}
+
+	public byte[] getPicture() {
+		return picture;
+	}
+
+	public void setPicture(byte[] picture) {
+		this.picture = picture;
 	}
 	
 //	private Set<PetSpecies> petSpecies;
