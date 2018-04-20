@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.ddns.petrizoo.services.LoginManager;
 
@@ -42,7 +43,11 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		lm.logOnUser(request.getParameter("username"), request.getParameter("password"));
+		if (lm.logOnUser(request.getParameter("username"), request.getParameter("password"))) {
+			HttpSession session = request.getSession();
+			session.setAttribute("loggedInUser", request.getParameter("username"));
+			response.sendRedirect("");
+		}
 	}
 
 }

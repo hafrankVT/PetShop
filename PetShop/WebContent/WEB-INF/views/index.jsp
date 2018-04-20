@@ -17,8 +17,8 @@
 		<%
 			if (session.getAttribute("loggedInUser") != null) {
 		%>
-		<li style="float: right"><a href="UserPage"
-			class="nav-bar-item-right">Welcome, User!</a></li>
+		<li style="float: right"><a href="UserPage">Welcome,
+				User!</a></li>
 		<%
 			} else {
 		%>

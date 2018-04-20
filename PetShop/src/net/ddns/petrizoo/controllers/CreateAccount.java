@@ -49,7 +49,11 @@ public class CreateAccount extends HttpServlet {
 		String userName = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-		lm.addUser(userName, password);
+		if (lm.addUser(userName, password)) {
+			response.sendRedirect("Login");
+		} else {
+			response.getWriter().append("Unfortunately, we were unable to add you to the account.");
+		}
 		
 	}
 
