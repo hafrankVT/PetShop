@@ -13,7 +13,7 @@ import javax.persistence.Transient;
  * Entity implementation class for Entity: User
  *
  */
-@NamedQuery(name="User.findUserByName", query="SELECT u FROM ShopUser u WHERE u.userName = :userName")
+@NamedQuery(name = "User.findUserByName", query = "SELECT u FROM ShopUser u WHERE u.userName = :userName")
 @Entity
 
 public class ShopUser implements Serializable {
@@ -24,25 +24,30 @@ public class ShopUser implements Serializable {
 	public ShopUser() {
 		super();
 	}
-	
 
-//	@GeneratedValue(strategy = GenerationType.AUTO)
-//	private Integer id;
 	@Id
 	private String userName;
-	
+
 	private String password;
 
-//	public Integer getId() {
-//		return id;
-//	}
-//
-//	public void setId(Integer id) {
-//		this.id = id;
-//	}
+	private Double accountBalance;
+
+	// private String firstName;
+	//
+	// private String lastName;
+	//
+	// private String address;
 
 	public String getUserName() {
 		return userName;
+	}
+
+	public Double getAccountBalance() {
+		return accountBalance;
+	}
+
+	public void setAccountBalance(Double accountBalance) {
+		this.accountBalance = accountBalance;
 	}
 
 	public void setUserName(String userName) {
@@ -56,6 +61,5 @@ public class ShopUser implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-   
+
 }

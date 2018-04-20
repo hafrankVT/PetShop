@@ -39,6 +39,7 @@ public class LoginManager {
 			return false;
 		} catch (NoResultException e) {
 			ShopUser user = new ShopUser();
+			user.setAccountBalance(500.00);
 			user.setPassword(password);
 			user.setUserName(userName);
 			em.persist(user);
