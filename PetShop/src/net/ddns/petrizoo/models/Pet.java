@@ -3,6 +3,8 @@ package net.ddns.petrizoo.models;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,10 +35,12 @@ public class Pet implements Serializable {
 	
 	private String name;
 	
+	@Enumerated(EnumType.STRING)
 	private PetType petType;
 	
 	private Double cost;
 	
+	@Enumerated(EnumType.STRING)
 	private Gender gender;
 	
 	private boolean fixed;
