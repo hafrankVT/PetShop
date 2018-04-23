@@ -1,34 +1,33 @@
 package net.ddns.petrizoo.controllers;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 
 import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import net.ddns.petrizoo.models.Pet;
 import net.ddns.petrizoo.services.PetManager;
-import sun.misc.IOUtils;
 
 /**
- * Servlet implementation class Media
+ * Servlet implementation class Store
  */
-@WebServlet("/Media")
-public class Media extends HttpServlet {
+@WebServlet("/Store")
+public class Store extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	@EJB
-	PetManager pm;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Media() {
+	
+	@EJB
+	PetManager pm;
+	
+    public Store() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,24 +36,14 @@ public class Media extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		//Retrieve the list of all available pets in the store
+		HttpSession session = request.getSession();
+		session.setAttribute("pet_list", pm.getPetList());
 		
-		//Retrieve a pet by ID, and return that pet's picture value as an image.
-		//Add in error check so that if invalid ID it doesn't crash the system.
+		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/PetList.jsp");
 		
-		Pet p = pm.getPetById(request.getParameter("id"));
-		if (p.getPicture() != null) {
-			System.out.println(p.getPicture());
-		response.setHeader("Content-Disposition", "inline;filename=" + p.getName() + "");
+		view.forward(request, response);
 		
-		//Try to write the file
-		OutputStream out = response.getOutputStream();
-		response.setContentType(".jpg");
-		response.setContentLength(p.getPicture().length);
-		out.write(p.getPicture());
-		} else {
-			response.sendRedirect("resources/NoPic.jpg");
-		}
 	}
 
 	/**

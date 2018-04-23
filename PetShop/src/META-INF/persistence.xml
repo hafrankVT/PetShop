@@ -3,7 +3,7 @@
 	<persistence-unit name="petshop">
 		<jta-data-source>java:/PetShopDB</jta-data-source>
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.enable_lazy_load_no_trans"
 				value="true" />

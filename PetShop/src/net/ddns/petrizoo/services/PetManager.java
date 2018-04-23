@@ -1,5 +1,7 @@
 package net.ddns.petrizoo.services;
 
+import java.util.List;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -7,7 +9,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import net.ddns.petrizoo.models.Pet;
-import net.ddns.petrizoo.models.ShopUser;
 
 /**
  * Session Bean implementation class PetManager
@@ -36,6 +37,13 @@ public class PetManager {
 				.setParameter("id", Integer.parseInt(idNo));
 		Pet p = petQuery.getSingleResult();
 		return p;
+	}
+	
+	public List<Pet> getPetList() {
+		TypedQuery<Pet> pQuery = em.createQuery("SELECT p FROM Pet p", Pet.class);
+		List<Pet> petList = pQuery.getResultList();
+		
+		return petList;
 	}
 
 }
