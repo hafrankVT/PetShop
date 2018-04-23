@@ -43,7 +43,7 @@ public class Media extends HttpServlet {
 		//Add in error check so that if invalid ID it doesn't crash the system.
 		
 		Pet p = pm.getPetById(request.getParameter("id"));
-		if (p.getPicture() != null) {
+		if (p.getPicture().length != 0) {
 			System.out.println(p.getPicture());
 		response.setHeader("Content-Disposition", "inline;filename=" + p.getName() + "");
 		
